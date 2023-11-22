@@ -626,11 +626,12 @@ MonoBehaviour:
   AtkDmg: 0
   AtkSpeed: 0
   Attacked: 0
+  AttackFose: {fileID: 0}
   Speed: 20
   JumpPower: 10
   MaxJumpCount: 3
   JumpCount: 0
-  BulletPos: {fileID: 999682884}
+  BulletPos: {fileID: 911405971}
   Bullet: {fileID: 1601168119934090289, guid: ab501bd7ae96dd24481f2c797907fd26, type: 3}
 --- !u!61 &911405968
 BoxCollider2D:
@@ -771,7 +772,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 999682883}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.33, y: 0.03, z: -0.009498801}
+  m_LocalPosition: {x: -0.025, y: -0.009, z: -0.009498801}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1101,7 +1102,7 @@ Canvas:
   m_GameObject: {fileID: 1958373956}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
   m_PixelPerfect: 0

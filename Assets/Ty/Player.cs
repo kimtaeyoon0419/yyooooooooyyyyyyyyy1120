@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,40 +10,47 @@ public class Player : MonoBehaviour
 
     Rigidbody2D rb;
 
+    [Header("Player Stats")]
     [SerializeField]
     float MaxHp;
     [SerializeField]
     float NowHp;
 
+    [Space(10f)]
     [SerializeField]
     float AtkDmg;
     [SerializeField]
     float AtkSpeed = 1;
     [SerializeField]
     bool Attacked = false;
+    [SerializeField]
+    GameObject AttackFose;
 
-
-    [SerializeField] 
+    [Space(10f)]
+    [SerializeField]
     float Speed;
-    [SerializeField] 
+    [SerializeField]
     float JumpPower;
-    [SerializeField] 
+    [SerializeField]
     int MaxJumpCount = 3;
-    [SerializeField] 
+    [SerializeField]
     int JumpCount;
+
 
     float x;
 
+    [Header("Bullet")]
     [SerializeField]
     Transform BulletPos;
     [SerializeField]
     GameObject Bullet;
 
+
+
+
     void Awake()
     {
-
         rb = GetComponent<Rigidbody2D>();
-
     }
     private void Start()
     {
@@ -54,7 +62,8 @@ public class Player : MonoBehaviour
     private void Update()
     {
         PlayerJump();
-        if(Input.GetKeyDown(KeyCode.D)) { 
+        if (Input.GetKeyDown(KeyCode.D))
+        {
             BulletAtk();
         }
     }
@@ -67,8 +76,18 @@ public class Player : MonoBehaviour
 
     void PlayerMove()
     {
-        x = Input.GetAxis("Horizontal");
-        transform.position += new Vector3(x, 0, 0) * Speed * Time.deltaTime;
+        x = Input.GetAxis("Horizontal") * Speed;
+        if (Input.GetAxis("Horizontal") < 0)
+        {
+            transform.localScale = new Vector2(-1, 1);  
+            
+        }
+        if (Input.GetAxis("Horizontal") > 0)
+        {
+            transform.localScale = new Vector2(1, 1);
+        }
+        rb.velocity = new Vector2(x, 0);
+
     }
     void PlayerJump()
     {
