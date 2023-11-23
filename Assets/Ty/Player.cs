@@ -86,7 +86,7 @@ public class Player : MonoBehaviour
         {
             transform.localScale = new Vector2(1, 1);
         }
-        rb.velocity = new Vector2(x, 0);
+        rb.velocity = new Vector2(x, rb.velocity.y);
 
     }
     void PlayerJump()
