@@ -7,11 +7,12 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayButton()
     {
-        SceneManager.LoadScene("¥Ÿ¿Ω æ¿ ¿Ã∏ß ¿˚¿∏∏È µ ");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void QuitButton()
     {
         Application.Quit();
     }
+
 }
