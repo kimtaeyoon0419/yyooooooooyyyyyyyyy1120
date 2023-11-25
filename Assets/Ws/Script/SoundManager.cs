@@ -2,39 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
+
+
 
 public class SoundManager : SingTon<SoundManager>
 {
-    public Sound[] musicSound;
-    public AudioSource musicSource;
+    [Header("Audio Source")]
+    [SerializeField] AudioSource musicSource;
+    [SerializeField] AudioSource SFXSource;
+
+    [Header("Audio Clip")]
+
+    public AudioClip background;
+    public AudioClip Walk;
+    public AudioClip Jump;
+    public AudioClip Death;
 
     private void Start()
     {
-        PlayMusic("Theme");
+        musicSource.clip = background;
+        musicSource.Play();
     }
 
-    public void PlayMusic(string name)
+    public void PlaySFX(AudioClip clip)
     {
-        Sound s = Array.Find(musicSound, x => x.name == name);
-
-        if(s == null)
-        {
-            Debug.Log("SNF");
-        }
-        else
-        {
-            musicSource.clip = s.clip;
-            musicSource.Play();
-        }
-    }
-
-    public void ToggleMusic()
-    {
-        musicSource.mute = !musicSource.mute;
-    }
-
-    public void MusicVolume(float volume)
-    {
-        musicSource.volume = volume;
+        SFXSource.PlayOneShot(clip);
     }
 }
