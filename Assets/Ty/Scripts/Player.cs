@@ -70,8 +70,6 @@ public class Player : MonoBehaviour
     public float delayBetweenLightnings; // 번개가 내리칠 시간 딜레이
 
 
-
-
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -101,6 +99,7 @@ public class Player : MonoBehaviour
         {
             StartCoroutine(Dash());
         }
+
     }
 
     private void FixedUpdate()
@@ -155,13 +154,18 @@ public class Player : MonoBehaviour
         CanDash = false;
         isDashing = true;
         float originalGravity = rb.gravityScale;
+
         rb.gravityScale = 0f;
+
         rb.velocity = new Vector2(transform.localScale.x * DashPower, 0f);
         tr.emitting = true;
+
         yield return new WaitForSeconds(DashingTime);
         tr.emitting = false;
+
         rb.gravityScale = originalGravity;
         isDashing = false;
+
         yield return new WaitForSeconds(DashingCooldown);
         CanDash = true;
     }
