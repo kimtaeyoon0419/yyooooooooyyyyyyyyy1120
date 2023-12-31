@@ -718,9 +718,11 @@ MonoBehaviour:
   DashingCooldown: 0
   SkillPos: {fileID: 999682884}
   lightningPrefab: {fileID: 4311539197626026745, guid: 951373b3fbcac5a46a4d1c66012db2e7, type: 3}
+  BottlePrefab: {fileID: 3532713631443446062, guid: af47b4cf43ed7d049bd7c43a55d4ce52, type: 3}
   distanceBetweenLightnings: 2
   numberOfLightnings: 5
   delayBetweenLightnings: 0.5
+  BottleCoolTime: 5
 --- !u!61 &911405968
 BoxCollider2D:
   m_ObjectHideFlags: 0
