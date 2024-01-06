@@ -70,7 +70,9 @@ public class Player : MonoBehaviour
     int numberOfLightnings;//¹ø°³ °¹¼ö
     [SerializeField]
     float delayBetweenLightnings; // ¹ø°³°¡ ³»¸®Ä¥ ½Ã°£ µô·¹ÀÌ
-    
+    [SerializeField]
+    GameObject bottlePtc;
+
     public float BottleCoolTime;
     private float NowBottleCoolTime = 0;
     private bool isBottleAtk = false;
@@ -129,6 +131,7 @@ public class Player : MonoBehaviour
                 Debug.Log("¸»½Â±Õ »ç¶ûÇØ¿ä");
                 Destroy(bottleSpawn);
                 isBottleAtk = false;
+                Destroy(Instantiate(bottlePtc, bottleSpawn.transform.position, Quaternion.identity),1f);
             }
         }
 
@@ -150,6 +153,7 @@ public class Player : MonoBehaviour
     {
         Destroy(bottleSpawn);
         isBottleAtk = false;
+        Destroy(Instantiate(bottlePtc, bottleSpawn.transform.position, Quaternion.identity), 1f);   
     }
 
     void PlayerMove()
@@ -174,7 +178,7 @@ public class Player : MonoBehaviour
     {
         if (JumpCount != 0)
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            if (Input.GetKeyDown(KeyCode.Z))
             {
                 JumpCount--;
                 rb.velocity = Vector2.up * JumpPower;
